@@ -65,8 +65,8 @@ string tracebackSecondaryStructure(const string& rna, const vector<vector<int> >
         } else {
             structure[splitPoint] = '(';
             structure[j] = ')';
-            segments.push(make_pair(i, splitPoint - 1)); //left
-            segments.push(make_pair(splitPoint + 1, j - 1)); //right
+            segments.push(make_pair(i, splitPoint - 1)); // left
+            segments.push(make_pair(splitPoint + 1, j - 1)); // right
         }
     }
 
