@@ -4,7 +4,7 @@
 
 using namespace std;
 
-
+//valid pair condition
 bool canPair(char base1, char base2) {
     return (base1 == 'A' && base2 == 'U') ||
            (base1 == 'U' && base2 == 'A') ||
@@ -12,6 +12,7 @@ bool canPair(char base1, char base2) {
            (base1 == 'G' && base2 == 'C');
 }
 
+//this is the dp algorithm taught in class
 int solve(string rna, vector<vector<int> >& traceback) {
     int n = rna.size();
     vector<vector<int> > OPT(n, vector<int>(n, 0));
@@ -46,6 +47,7 @@ int solve(string rna, vector<vector<int> >& traceback) {
     return OPT[0][n - 1];
 }
 
+//traceback, we use the splitpoint we saved in the traceback vector to put together our steps from the begining wjile getting each valid pair
 string tracebackSecondaryStructure(string rna, vector<vector<int> > traceback) {
     int n = rna.size();
     stack<pair<int, int> > segments;
