@@ -46,7 +46,7 @@ int solve(string rna, vector<vector<int> >& traceback) {
     return OPT[0][n - 1];
 }
 
-string tracebackSecondaryStructure(const string& rna, const vector<vector<int> >& traceback) {
+string tracebackSecondaryStructure(string rna, vector<vector<int> > traceback) {
     int n = rna.size();
     stack<pair<int, int> > segments;
     segments.push(make_pair(0, n - 1));
