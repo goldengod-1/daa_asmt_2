@@ -74,29 +74,28 @@ string tracebackSecondaryStructure(string rna, vector<vector<int> > traceback) {
 
     return structure;
 }
-// int checkSimilarity(string structurePredicted, string structureActual){
-//     int n = structurePredicted.size();
-//     int c = 0;
-//     for(int i=0; i<n; ++i){
-//         if((structurePredicted[i]=='('&&structureActual[i]=='(')||(structurePredicted[i]==')'&&structureActual[i]==')')){
-//             c++;
-//         }
-//     };
-//     return c/2;
-// }
+int actualPairs(string structureActual){
+    int c = 0;
+    for(auto x: structureActual){
+        if(x=='('){
+            c++;
+        }
+    }
+    return c;
+}
 int main() {
     string rna;
     string actual;
     cin>>rna;
-    // cin>>actual;
+    cin>>actual;
     int n = rna.size();
     vector<vector<int> > traceback(n, vector<int>(n, -1));
 
     int ans = solve(rna, traceback);
     string secondaryStructure = tracebackSecondaryStructure(rna, traceback);
-    // float similarity = checkSimilarity(secondaryStructure, actual);
+
+    cout << secondaryStructure << endl;
     cout <<"optimal pairs " << ans << endl;
-    cout <<"Secondary Structure " << secondaryStructure << endl;
-    // cout <<"actual pairs " << similarity << endl;
+    cout <<"actual pairs " << actualPairs(actual) << endl;
     return 0;
 }
