@@ -17,7 +17,7 @@ int solve(string rna, vector<vector<int> >& traceback) {
     int n = rna.size();
     vector<vector<int> > OPT(n, vector<int>(n, 0));
 
-    for (int k=5; k<n; k++) {
+    for (int k=4; k<n; k++) {
         for (int i=0; i<n-k; i++) {
             int j=i+k;
 
