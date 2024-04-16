@@ -1,5 +1,9 @@
 #include <iostream>
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <stack>
+
 
 using namespace std;
 
@@ -17,6 +21,7 @@ public:
     char operator[](int index){
         return sequence[index];
     }
+
 };
 
 class DynamicProgrammingSolver {

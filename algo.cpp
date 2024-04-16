@@ -48,11 +48,12 @@ int solve(string rna, vector<vector<int> >& traceback) {
 }
 
 //traceback, we use the splitpoint we saved in the traceback vector to put together our steps from the begining wjile getting each valid pair
-string tracebackSecondaryStructure(string rna, vector<vector<int> > traceback) {
+vector <pair<int, int> > tracebackSecondaryStructure(string rna, vector<vector<int> > traceback, string & structure) {
     int n = rna.size();
     stack<pair<int, int> > segments;
     segments.push(make_pair(0, n - 1));
-    string structure(n, '.');
+    // string structure(n, '.');
+    vector <pair<int, int> > pairs;
     while (!segments.empty()) {
         int i = segments.top().first;
         int j = segments.top().second;
@@ -67,12 +68,13 @@ string tracebackSecondaryStructure(string rna, vector<vector<int> > traceback) {
         } else {
             structure[splitPoint] = '(';
             structure[j] = ')';
+            pairs.push_back(make_pair(splitPoint, j));
             segments.push(make_pair(i, splitPoint-1)); // left
             segments.push(make_pair(splitPoint+1, j-1)); // right
         }
     }
 
-    return structure;
+    return pairs;
 }
 int actualPairs(string structureActual){
     int c = 0;
@@ -92,10 +94,13 @@ int main() {
     vector<vector<int> > traceback(n, vector<int>(n, -1));
 
     int ans = solve(rna, traceback);
-    string secondaryStructure = tracebackSecondaryStructure(rna, traceback);
-
-    cout << secondaryStructure << endl;
+    string structure(n, '.');
+    vector <pair<int, int> > pairs = tracebackSecondaryStructure(rna, traceback, structure);
+    cout << structure << endl;
     cout <<"optimal pairs " << ans << endl;
     cout <<"actual pairs " << actualPairs(actual) << endl;
+    for(auto x: pairs){
+        cout<<x.first<<" "<<x.second<<endl;
+    }
     return 0;
 }
