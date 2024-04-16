@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="with=device-width, initial-scale=1.0">
+		<title>CS F364 Documentation</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<section class="header">
+			<nav>
+				<a href="../Documentation.html"><img src="../images/logo.png"></a>
+				<div class="nav-links">
+					<ul>
+						<li><a href="../Documentation.html">HOME</a></li>
+						<li><a href="About.html">ABOUT</a></li>
+						<li><a href="Aim.html">AIM</a></li>
+						<li><a href="Classes.html">CLASSES</a></li>
+						<li><a href="Functions.html">FUNCTIONS</a></li>
+						<li><a href="Outputs.html">OUTPUTS</a></li>
+						<li><a href="Thoughts.html">THOUGHTS</a></li>
+					</ul>
+				</div>
+			</nav>
+		<div class="functions_text">
+			<h1>
+                1. RnaSequence Class
+            </h1>
+			<p>
+                We created this class to have a datatype definition for RnaSequence. We implemented methods to get the length of the RnaSequence and to get the pair at a particular index.
+			</p>
+            <h1>
+                2. RnaFolding Class
+            </h1>
+            <p>
+                This class was created to have a better understanding on which of the bases are being paired and which ones are being left out according to our optimal algorithm. We implemented the method tracebackSecondaryStructure in this class. While filling the dp table , if the index is not taken for pairing, we store -1 as the splitpoint in the traceback table, in the other case if pairing happens , we choose a t and store it as the splitpoint in the traceback table. We use a stack to check iteratively if there was any split for 0,n-1 initially, once we find the split we break into the left and right side and push it into the stack, the algorithm runs iteratively in this manner.
+            </p>
+            <h1>
+                3. DynamicProgramSolver Class
+            </h1>
+            <p>
+                A basic class which has the complete algorithm, one of its method is canPair to make sure the pairing criteria is being taken care of.
+            </p>
+			<h1>
+				4. RNAFoldingAnalyzer Class
+			</h1>
+			<p>
+				A class to analyse the number of pairs in the actual structure.
+			</p>
+		</div>
+	</section> 
+	</body>
+</html>

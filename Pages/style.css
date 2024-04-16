@@ -1,0 +1,215 @@
+*{
+    margin: 0;
+    padding: 0
+}
+body{
+    background-color: rgba(5, 0, 14);
+}
+.header{
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(1, 3, 11, 0.8),rgba(1, 3, 11,0.8)),url(../images/trial.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+nav{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+nav img{
+    width: 85px;
+}
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+.nav-links ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+}
+.nav-links ul li::after{
+    content:'';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+    width: 100%;
+}
+.text-box{
+    width: 100%;
+    color: #fff;
+    position: absolute;
+    top: 33%;
+    align-self: center;
+    text-align: center;
+}
+.text-box h1{
+    font-size: 62px;
+}
+.text-box p{
+    margin: 10px 0 40px;
+    font-size: 25px;
+    color: #fff;
+}
+.button{
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 34px;
+    font-size: 27px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+.button:hover{
+    border: 1px solid #f44336;
+    background: #f44336;
+    transition: 1s;
+}
+.task{
+    width: 100%;
+    color: #fff;
+    position: absolute;
+    top: 30%;
+    align-self: center;
+}
+.task h1{
+    font-size: 62px;
+    text-align: center;
+}
+.task ul li{
+    list-style: none;
+    display:list-item;
+    padding: 8px 12px;
+}
+.task ul li a{
+    color: #fff;
+    margin-left: 30%;
+    text-decoration: none;
+    text-align: justify;
+    font-size: 25px;
+    position: relative;
+}
+.task ul li a:hover{
+    color:#f44336;
+}
+.functions_text{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.functions_text h1{
+    font-size: 27px;
+    color: #fff;
+}
+.functions_text p{
+    margin: 10px 0 25px;
+    font-size: 18px;
+    color: #fff;
+    text-align: justify;
+}
+.button2 {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 34px;
+    font-size: 27px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-left: 42.5%;
+}
+.button2:hover{
+    border: 1px solid #f44336;
+    background: #f44336;
+    transition: 1s;
+}
+.output_text{
+    width: 100%;
+    color: #fff;
+    position: absolute;
+    top: 20%;
+    align-self: center;
+}
+.output_text h1{
+    text-align: center;
+    font-size: 40px;
+}
+.output_text p{
+    text-align: center;
+    margin: 10px 0 40px;
+    font-size: 25px;
+    color: #fff;
+}
+.out-links ul li a{
+    color: #fff;
+    margin-left: 40%;
+    text-decoration: none;
+    text-align: justify;
+    font-size: 25px;
+    position: relative;
+}
+.out-links ul li a:hover{
+    color:#f44336;
+}
+.results{
+    width: 100%;
+    color: #fff;
+    position: absolute;
+    top: 20%;
+    align-self: center;
+    text-align: center;
+}
+.button3 {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 1% 2%;
+    font-size: 18px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-left: 0%;
+}
+.button3:hover{
+    border: 1px solid #f44336;
+    background: #f44336;
+    transition: 1s;
+}
+.button4 {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 34px;
+    font-size: 27px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-left: 44%;
+    margin-top: 3%;
+}
+.button4:hover{
+    border: 1px solid #f44336;
+    background: #f44336;
+    transition: 1s;
+}
