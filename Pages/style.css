@@ -213,3 +213,25 @@ nav img{
     background: #f44336;
     transition: 1s;
 }
+#inputContainer {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  #outputContainer {
+    text-align: center;
+  }
+  #rnaSvg {
+    display: inline-block;
+    background-color: #fff;
+  }
+  svg {
+    border: 1px solid #ccc;
+  }
+  .base {
+    fill: #4CAF50; /* Green */
+  }
+  .arc {
+    fill: none;
+    stroke: #4CAF50; /* Green */
+    stroke-width: 2;
+  }

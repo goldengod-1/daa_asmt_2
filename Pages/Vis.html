@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta name="viewport" content="with=device-width, initial-scale=1.0">
+		<title>CS F364 Documentation</title>
+		<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="header">
+    <nav>
+        <a href="../Documentation.html"><img src="../images/logo.png"></a>
+        <div class="nav-links">
+            <ul>
+                <li><a href="../Documentation.html">HOME</a></li>
+                <li><a href="About.html">ABOUT</a></li>
+                <li><a href="Aim.html">AIM</a></li>
+                <li><a href="Classes.html">CLASSES</a></li>
+                <li><a href="Functions.html">FUNCTIONS</a></li>
+                <li><a href="Outputs.html">OUTPUTS</a></li>
+                <li><a href="Thoughts.html">THOUGHTS</a></li>
+                <li><a href="pages/Vis.html">VISUALISATION</a></li>
+
+            </ul>
+        </div>
+    </nav>
+  <div id="inputContainer">
+    <label for="dotBracketInput"style="color: white;">Enter dot-bracket notation:</label>
+    <br>
+    <input type="text" id="dotBracketInput" />
+    <br>
+    <button onclick="drawStructure()">Draw</button>
+  </div>
+  <div id="outputContainer">
+    <svg id="rnaSvg" width="600" height="500"></svg>
+  </div>
+  <script>
+    function drawStructure() {
+      const dotBracket = document.getElementById("dotBracketInput").value;
+      const svg = document.getElementById("rnaSvg");
+      svg.innerHTML = ""; // Clear previous drawings
+
+      const backboneLength = 500;
+      const centerX = 300;
+      const centerY = 250;
+
+      // Draw backbone
+      svg.innerHTML += `<line x1="${centerX - backboneLength / 2}" y1="${centerY}" x2="${centerX + backboneLength / 2}" y2="${centerY}" stroke="black" stroke-width="2" />`;
+
+      // Parse dot-bracket notation
+      const pairs = [];
+      const stack = [];
+      for (let i = 0; i < dotBracket.length; i++) {
+        if (dotBracket[i] === "(") {
+          stack.push(i);
+        } else if (dotBracket[i] === ")") {
+          const j = stack.pop();
+          pairs.push([j, i]);
+        }
+      }
+
+      // Draw bases and arcs
+      const baseSpacing = backboneLength / (dotBracket.length - 1);
+      for (let i = 0; i < dotBracket.length; i++) {
+        const baseX = centerX - backboneLength / 2 + i * baseSpacing;
+        const baseY = centerY;
+
+        if (dotBracket[i] === ".") {
+          svg.innerHTML += `<circle cx="${baseX}" cy="${baseY}" r="5" class="base" />`;
+        } else if (dotBracket[i] === "(") {
+          const pairIndex = pairs.findIndex(pair => pair[0] === i);
+          if (pairIndex !== -1) {
+            const j = pairs[pairIndex][1];
+            const startX = centerX - backboneLength / 2 + i * baseSpacing;
+            const endX = centerX - backboneLength / 2 + j * baseSpacing;
+            const midX = (startX + endX) / 2;
+            const dX = Math.abs(endX - startX); // Difference in x-coordinates
+            const controlX = midX;
+            const controlY = centerY - dX / 2; // Control point y-coordinate
+            const d = `M${startX},${baseY} Q${controlX},${controlY} ${endX},${baseY}`;
+            svg.innerHTML += `<path d="${d}" class="arc" />`;
+          }
+        }
+      }
+    }
+    
+  </script>
+  </section>
+</body>
+</html>

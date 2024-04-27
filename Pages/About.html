@@ -18,6 +18,8 @@
 						<li><a href="Functions.html">FUNCTIONS</a></li>
 						<li><a href="Outputs.html">OUTPUTS</a></li>
 						<li><a href="Thoughts.html">THOUGHTS</a></li>
+						<li><a href="Vis.html">VISUALISATION</a></li>
+
 					</ul>
 				</div>
 			</nav>
@@ -26,7 +28,14 @@
                 Thought Process
             </h1>
 			<p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio eligendi assumenda deserunt aliquam reiciendis repudiandae, quia totam recusandae tempore sit sint consequatur dicta, quam dolorum quos, labore animi perferendis odit.
+				1. Identify the range of sub-problems: Since we're dealing with sequences of length n, our sub-problems range from ( OPT(1, 2) ) to ( OPT(1, n) ), ( OPT(2, n) ), ( OPT(3, n) ), and so on until ( OPT(n-1, n) ).
+
+			</p>
+			<p>
+				2. Compute the sizes of sub-problems: For each sub-problem OPT(i, j) , calculate the size of the subsequence represented by ( j - i ).
+			</p>
+			<p>
+				3. Order sub-problems by size: Sort the sub-problems based on their sizes from smallest to largest.
 			</p>
             <h1>
                 Languages Used
