@@ -86,11 +86,13 @@ private:
 public:
     RNAFolding(RNASequence& r, vector<vector<int>>& tb) : rna(r), traceback(tb) {}
 
-    string tracebackSecondaryStructure() {
+    vector<pair<int,int>> tracebackSecondaryStructure(string &structure) {
         int n = rna.length();
         stack<pair<int, int>> segments;
         segments.push(make_pair(0, n - 1));
-        string structure(n, '.');
+        //string structure(n, '.');
+        vector<pair<int,int>> pairs;
+
         while (!segments.empty()) {
             int i = segments.top().first;
             int j = segments.top().second;
@@ -105,12 +107,13 @@ public:
             } else {
                 structure[splitPoint] = '(';
                 structure[j] = ')';
+                pairs.push_back(make_pair(splitPoint, j));
                 segments.push(make_pair(i, splitPoint - 1)); // left
                 segments.push(make_pair(splitPoint + 1, j - 1)); // right
             }
         }
 
-        return structure;
+        return pairs;
     }
 };
 
@@ -135,14 +138,21 @@ int main() {
     RNASequence rnaSeq(rna);
     DynamicProgrammingSolver solver(rnaSeq.length());
     int optimal = solver.solve(rnaSeq);
-
+    int n = rna.size();
     vector<vector<int>>& traceback = solver.getTraceback();
 
     RNAFolding folding(rnaSeq, traceback);
-    string secondaryStructure = folding.tracebackSecondaryStructure();
-
-    cout << secondaryStructure << endl;
+    vector<pair<int, int>> pairs;
+    string structure(n,'.');
+    pairs = folding.tracebackSecondaryStructure(structure);
+    // string secondaryStructure = folding.tracebackSecondaryStructure();
+    cout<<structure<<endl;
+    //cout << secondaryStructure << endl;
     cout << "optimal pairs " << optimal << endl;
+    cout << "Optimal pairing according to the indices:"<<endl;
+    for(auto x: pairs){
+        cout<<"("<<x.first<<","<<x.second<<")"<<endl;
+    }
     // cout << "actual pairs " << RNAFoldingAnalyzer::countActualPairs(actual) << endl;
 
     return 0;

@@ -89,7 +89,7 @@ int main() {
     string rna;
     string actual;
     cin>>rna;
-    cin>>actual;
+    // cin>>actual;
     int n = rna.size();
     vector<vector<int> > traceback(n, vector<int>(n, -1));
 
@@ -98,7 +98,7 @@ int main() {
     vector <pair<int, int> > pairs = tracebackSecondaryStructure(rna, traceback, structure);
     cout << structure << endl;
     cout <<"optimal pairs " << ans << endl;
-    cout <<"actual pairs " << actualPairs(actual) << endl;
+    // cout <<"actual pairs " << actualPairs(actual) << endl;
     for(auto x: pairs){
         cout<<x.first<<" "<<x.second<<endl;
     }
