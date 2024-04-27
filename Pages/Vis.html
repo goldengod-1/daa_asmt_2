@@ -31,7 +31,7 @@
     <button onclick="drawStructure()">Draw</button>
   </div>
   <div id="outputContainer">
-    <svg id="rnaSvg" width="600" height="500"></svg>
+    <svg id="rnaSvg" width="1500" height="500"></svg>
   </div>
   <script>
     function drawStructure() {
@@ -39,9 +39,9 @@
       const svg = document.getElementById("rnaSvg");
       svg.innerHTML = ""; // Clear previous drawings
 
-      const backboneLength = 500;
-      const centerX = 300;
-      const centerY = 250;
+      const backboneLength = 1300;
+      const centerX = 750;
+      const centerY = 400;
 
       // Draw backbone
       svg.innerHTML += `<line x1="${centerX - backboneLength / 2}" y1="${centerY}" x2="${centerX + backboneLength / 2}" y2="${centerY}" stroke="black" stroke-width="2" />`;
