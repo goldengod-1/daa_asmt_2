@@ -95,7 +95,7 @@ int main() {
 
     int ans = solve(rna, traceback);
     string structure(n, '.');
-    vector <pair<int, int> > pairs = tracebackSecondaryStructure(rna, traceback, structure);
+    vector<pair<int, int>> pairs = tracebackSecondaryStructure(rna, traceback, structure);
     cout << structure << endl;
     cout <<"optimal pairs " << ans << endl;
     // cout <<"actual pairs " << actualPairs(actual) << endl;
