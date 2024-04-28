@@ -37,8 +37,20 @@
 			<p>
 				3. Order sub-problems by size: Sort the sub-problems based on their sizes from smallest to largest.
 			</p>
+			<h1>Issues in Coding:</h1>
+				
+				<p><strong>1. Efficiently handling subproblems:</strong> Since there can be a large number of subproblems, efficient data structures and algorithms need to be used to store and compute them.</p>
+				<p><strong>2. Handling base cases:</strong> Implementing the base cases, such as when  i >= j-4 , is crucial to ensure correctness.</p>
+				<p><strong>3. Determining the knot condition:</strong> Properly identifying and handling the cases where j pairs with some t < j - 4 is essential for correctness.</p>
+				<p><strong>4. Ordering subproblems:</strong> The algorithm requires ordering the subproblems from smallest to largest, which is challenging to implement efficiently.</p>
+			
+			<h1>General Discussion:</h1>
+				  <p><strong>Dynamic Programming Approach:</strong> The algorithm follows a dynamic programming approach to solve the problem by breaking it down into smaller subproblems and efficiently combining their solutions.</p>
+				  <p><strong>Optimal Substructure:</strong> The problem exhibits optimal substructure, meaning that the optimal solution to a larger problem can be constructed from optimal solutions to its smaller subproblems.</p>
+				  <p><strong>Time Complexity:</strong> The time complexity of the algorithm is  O(n^2) due to the O(n^2) subproblems that need to be computed.</p>
+				  <p><strong>Potential Optimization:</strong> There might be opportunities for optimization, such as memoization to avoid redundant computations and pruning techniques to reduce the number of subproblems considered.</p>
             <h1>
-                Languages Used
+				  Languages Used
             </h1>
             <p>
             C++, HTML, CSS
