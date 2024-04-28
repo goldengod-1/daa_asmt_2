@@ -52,11 +52,12 @@
 			3. <strong>Choose the Maximum:</strong> Finally, we choose the maximum between Option 1 and Option 2 to obtain the optimal solution for the sub-problem OPT(i, j).
 			</p>
 			<p>
-			The time complexity of solving this recurrence relation depends on the number of sub-problems we need to compute. Since each sub-problem OPT(i, j) depends on sub-problems OPT(i, j-1) and OPT(i, t-1) for some t < j - 4, and each sub-problem is computed only once, the total number of sub-problems is O(n^2) , where n is the length of the input sequence.
+			The time complexity of solving this recurrence relation depends on the number of sub-problems we need to compute. Since each sub-problem OPT(i, j) depends on sub-problems OPT(i, j-1) and OPT(i, t-1) for some t < j - 4, and each sub-problem is computed only once, the total number of sub-problems is O(n^2) , where n is the length of the input sequence and evaluating the recurrence in each takes O(n) time.
+			Therefore, the running time of this algorithm is O(n^3).
 			</p>
 
 			<p>
-			Therefore, the time complexity of solving this recurrence relation is O(n^2).
+			
 			</p>
 
 <h1>Conclusion</h1>
