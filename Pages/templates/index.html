@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CS F364 Documentation</title>
+    <link rel="stylesheet" href="../style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Center the form */
+        form {
+            text-align: center;
+            margin-top: 20px; /* Add some top margin for spacing */
+        }
+
+        /* Style for the text field and submit button */
+        #text_input {
+            padding: 10px;
+            width: 300px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script type='text/javascript' src='jquery.js'></script>
+    <script type='text/javascript' src='d3.js'></script>
+    <script type='text/javascript' src='fornac.js'></script>
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <a href="../../Documentation.html"><img src="../../images/logo.png"></a>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="../../Documentation.html">HOME</a></li>
+                    <li><a href="About.html">ABOUT</a></li>
+                    <li><a href="Aim.html">AIM</a></li>
+                    <li><a href="Classes.html">CLASSES</a></li>
+                    <li><a href="Functions.html">FUNCTIONS</a></li>
+                    <li><a href="Outputs.html">OUTPUTS</a></li>
+                    <li><a href="Thoughts.html">COMPLEXITY ANALYSIS</a></li>
+                    <li><a href="SecondaryStructure.html">SECONDARY STRUCTURE</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Move the form just below the navigation bar -->
+    <form action="/process_text" method="post">
+        <label for="text_input">Enter text:</label><br>
+        <input type="text" id="text_input" name="text_input"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
