@@ -29,43 +29,42 @@
 				</div>
 			</nav>
 		<div class="functions_text">
-			<h1>Recurrence Relation Derivation:</h1>
-
-				<p>
-				1. <strong>Base Case:</strong> The base case for the recurrence relation is when ( i ≥ j-4 ). In this case, OPT(i, j) = 0 because it's not possible to form a valid secondary structure with fewer than 4 bases.
-				</p>
-
-				<p>
-				2. <strong>Recursive Case:</strong> For ( i < j-4 ), we need to consider two options:
-				<ul>
-					<li><strong>Option 1:</strong> If the base j does not pair with any other base, then the optimal secondary structure for the substring b_ib_{i+1}...b_{j-1} is the same as the optimal structure for the substring b_ib_{i+1}...b_{j-2}, i.e., OPT(i, j) = OPT(i, j-1).</li>
-					<li><strong>Option 2:</strong> If the base j pairs with some base t < j - 4, then we need to consider splitting the substring b_ib_{i+1}...b_j into two independent sub-problems:
-					<ul>
-						<li>The first sub-problem deals with the substring b_ib_{i+1}...b_{t-1}, which can be solved by OPT(i, t-1).</li>
-						<li>The second sub-problem deals with the substring b_{t+1}b_{t+2}...b_{j-1}, which can be solved by OPT(t+1, j-1).</li>
+			<h1>Analysing Time complexity:</h1>
+			<p>
+			1. <strong>Base Case:</strong> The base case for the recurrence relation is when ( i ≥ j-4 ). In this case, OPT(i, j) = 0 because it's not possible to form a valid secondary structure with fewer than 4 bases.
+			</p>
+			<p>
+			2. <strong>Recursive Case:</strong> For ( i < j-4 ), we need to consider two options:
+			<ul style="margin-left: 50px;">
+				<li><strong>Option 1:</strong> If the base j does not pair with any other base, then the optimal secondary structure for the substring <em>bi</em><sub>i+1</sub> ... <em>b</em><sub>j-1</sub> is the same as the optimal structure for the substring <em>b</em><sub>i</sub> <em>b</em><sub>i+1</sub> ... <em>b</em><sub>j-2</sub>, i.e., OPT(i, j) = OPT(i, j-1).</li>
+				<li><strong>Option 2:</strong> If the base j pairs with some base t < j - 4, then we need to consider splitting the substring <em>b</em><sub>i</sub> <em>b</em><sub>i+1</sub> ... <em>b</em><sub>j</sub> into two independent sub-problems:
+					<ul style="margin-left: 35px;">
+						<li>The first sub-problem deals with the substring <em>b</em><sub>i</sub> <em>b</em><sub>i+1</sub> ... <em>b</em><sub>t-1</sub>, which can be solved by OPT(i, t-1).</li>
+						<li>The second sub-problem deals with the substring <em>b</em><sub>t+1</sub> <em>b</em><sub>t+2</sub> ... <em>b</em><sub>j-1</sub>, which can be solved by OPT(t+1, j-1).</li>
 						<li>Additionally, we add 1 to account for the pairing of bases j and t, so the total score becomes 1 + OPT(i, t-1) + OPT(t+1, j-1).</li>
 					</ul>
-					</li>
-				</ul>
-				</p>
+				</li>
+			</ul>
+			</p>
+			
 
-				<p>
-				3. <strong>Choose the Maximum:</strong> Finally, we choose the maximum between Option 1 and Option 2 to obtain the optimal solution for the sub-problem OPT(i, j).
-				</p>
-				<p>
-					The time complexity of solving this recurrence relation depends on the number of sub-problems we need to compute. Since each sub-problem \( \text{OPT}(i, j) \) depends on sub-problems \( \text{OPT}(i, j-1) \) and \( \text{OPT}(i, t-1) \) for some \( t < j - 4 \), and each sub-problem is computed only once, the total number of sub-problems is \( O(n^2) \), where \( n \) is the length of the input sequence.
-				  </p>
-				  
-				<p>
-				Therefore, the time complexity of solving this recurrence relation is \( O(n^2) \).
-				</p>
+			<p>
+			3. <strong>Choose the Maximum:</strong> Finally, we choose the maximum between Option 1 and Option 2 to obtain the optimal solution for the sub-problem OPT(i, j).
+			</p>
+			<p>
+			The time complexity of solving this recurrence relation depends on the number of sub-problems we need to compute. Since each sub-problem OPT(i, j) depends on sub-problems OPT(i, j-1) and OPT(i, t-1) for some t < j - 4, and each sub-problem is computed only once, the total number of sub-problems is O(n^2) , where n is the length of the input sequence.
+			</p>
 
-            <h1>
-                Conclusion
-            </h1>
-            <p>
-                We have successfully implemented the required algorithm and have formed an efficient code to find the optimal pairings in the RNA Secondary Structure.
-            </p>
+			<p>
+			Therefore, the time complexity of solving this recurrence relation is O(n^2).
+			</p>
+
+<h1>Conclusion</h1>
+<p>
+We have successfully implemented the required algorithm and have formed an efficient code to find the optimal pairings in the RNA Secondary Structure.
+</p>
+
+
             <a href="About.html" class="button4">Thank You!</a>
         </div>
 	</section> 
