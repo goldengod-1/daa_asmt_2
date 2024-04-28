@@ -155,6 +155,15 @@ int main() {
     string rna, actual;
     // Input RNA sequence
     cin >> rna; 
+    int n = rna.size();
+    for(int i=0;i<n;i++)
+    {
+        if(rna[i]!='A' && rna[i]!='G' && rna[i]!='U' && rna[i]!='C')
+        {
+            cout<<"Invalid Input"<<endl;
+            return 0;
+        }
+    }
 
     //cin>>actual;
 
@@ -162,7 +171,7 @@ int main() {
     RNASequence rnaSeq(rna);
     DynamicProgrammingSolver solver(rnaSeq.length());
     int optimal = solver.solve(rnaSeq);
-    int n = rna.size();
+   
     vector<vector<int>>& traceback = solver.getTraceback();
     
     //RNAFoldingAnalyzer analyse = RNAFoldingAnalyzer(); 
