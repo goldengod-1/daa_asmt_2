@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-		<meta name="viewport" content="with=device-width, initial-scale=1.0">
-		<title>CS F364 Documentation</title>
-		<link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS F364 Documentation</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section class="header">
+  <section class="header">
     <nav>
-        <a href="../Documentation.html"><img src="../images/logo.png"></a>
-        <div class="nav-links">
-            <ul>
-                <li><a href="../Documentation.html">HOME</a></li>
-                <li><a href="About.html">ABOUT</a></li>
-                <li><a href="Aim.html">AIM</a></li>
-                <li><a href="Classes.html">CLASSES</a></li>
-                <li><a href="Functions.html">FUNCTIONS</a></li>
-                <li><a href="Outputs.html">OUTPUTS</a></li>
-                <li><a href="Thoughts.html">COMPLEXITY ANALYSIS</a></li>
-                <li><a href="Vis.html">VISUALISATION</a></li>
-
-            </ul>
-        </div>
+      <a href="../Documentation.html"><img src="../images/logo.png"></a>
+      <div class="nav-links">
+        <ul>
+          <li><a href="../Documentation.html">HOME</a></li>
+          <li><a href="About.html">ABOUT</a></li>
+          <li><a href="Aim.html">AIM</a></li>
+          <li><a href="Classes.html">CLASSES</a></li>
+          <li><a href="Functions.html">FUNCTIONS</a></li>
+          <li><a href="Outputs.html">OUTPUTS</a></li>
+          <li><a href="Thoughts.html">COMPLEXITY ANALYSIS</a></li>
+          <li><a href="Vis.html">VISUALISATION</a></li>
+        </ul>
+      </div>
     </nav>
-  <div id="inputContainer">
-    <label for="dotBracketInput"style="color: white;">Enter dot-bracket notation:</label>
-    <br>
-    <input type="text" id="dotBracketInput" />
-    <br>
-    <button onclick="drawStructure()">Draw</button>
-  </div>
-  <div id="outputContainer">
-    <svg id="rnaSvg" width="1500" height="500"></svg>
-  </div>
+    <div id="inputContainer" style="padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+      <label for="dotBracketInput" style="color: white; font-size: 16px;">Enter dot-bracket notation:</label>
+      <br>
+      <input type="text" id="dotBracketInput" style="padding: 8px; margin-top: 5px; border: 2px solid #ccc; border-radius: 5px; width: 300px;">
+      <br>
+      <button onclick="drawStructure()" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">Draw</button>
+    </div>
+
+    <div id="outputContainer" style="padding: 20px; border-radius: 10px;">
+      <svg id="rnaSvg" width="90%" height="500"></svg>
+    </div>
+  </section>
+
   <script>
     function drawStructure() {
       const dotBracket = document.getElementById("dotBracketInput").value;
       const svg = document.getElementById("rnaSvg");
       svg.innerHTML = ""; // Clear previous drawings
 
-      const backboneLength = 1300;
-      const centerX = 750;
+      const backboneLength = svg.clientWidth - 100;
+      const centerX = svg.clientWidth / 2;
       const centerY = 400;
 
       // Draw backbone
@@ -82,8 +84,6 @@
         }
       }
     }
-    
   </script>
-  </section>
 </body>
 </html>
