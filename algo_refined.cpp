@@ -25,8 +25,10 @@ public:
 
 class DynamicProgrammingSolver {
 private:
-    vector<vector<int>> OPT; // Matrix to store optimal solutions
-    vector<vector<int>> traceback; // Matrix to store traceback
+    // Matrix to store optimal solutions
+    vector<vector<int>> OPT; 
+    // Matrix to store traceback
+    vector<vector<int>> traceback; 
 
     // Helper function to check if two bases can pair.
     bool canPair(char base1, char base2) {
@@ -52,18 +54,23 @@ public:
             for (int i = 0; i < n - k; i++) {
                 int j = i + k;
 
-                int max = OPT[i][j - 1]; // Initialize max with the previous value
-                int splitPoint = -1; //Initialize split point
+                // Initialize max with the previous value
+                int max = OPT[i][j - 1]; 
+                
+                //Initialize split point
+                int splitPoint = -1; 
             
                 // Try different split points and update max.
                 for (int t = i; t < j - 4; t++) {
                     if (canPair(rna[t], rna[j])) {
                         int c = 1;
                         if (t > i) {
-                            c += OPT[i][t - 1]; // Update with left segment.
+                            // Update with left segment.
+                            c += OPT[i][t - 1]; 
                         }
                         if (t + 1 < j) {
-                            c += OPT[t + 1][j - 1]; // Update with right segment.
+                            // Update with right segment.
+                            c += OPT[t + 1][j - 1]; 
                         }
                         if (c > max) {
                             max = c;
@@ -71,8 +78,10 @@ public:
                         }
                     }
                 }
-                OPT[i][j] = max; // Update OPT matrix with the maximum value.
-                traceback[i][j] = splitPoint; // Update traceback matrix.
+                // Update OPT matrix with the maximum value.
+                OPT[i][j] = max; 
+                // Update traceback matrix.
+                traceback[i][j] = splitPoint; 
             }
         }
 
@@ -86,8 +95,10 @@ public:
 
 class RNAFolding {
 private:
-      RNASequence& rna;  // Reference to the RNA sequence.
-      vector<vector<int>>& traceback; // Reference to traceback matrix.
+    // Reference to the RNA sequence.
+    RNASequence& rna; 
+    // Reference to traceback matrix. 
+    vector<vector<int>>& traceback; 
 
 public:
     RNAFolding(RNASequence& r, vector<vector<int>>& tb) : rna(r), traceback(tb) {}
@@ -103,23 +114,25 @@ public:
             int i = segments.top().first;
             int j = segments.top().second;
             segments.pop();
-
-            if (i >= j) continue; // Ignore if i is greater than or equal to j.
+            // Ignore if i is greater than or equal to j.
+            if (i >= j) continue; 
 
             int splitPoint = traceback[i][j];
 
             if (splitPoint == -1) {
-                segments.push(make_pair(i, j - 1)); // Push left segment
+                segments.push(make_pair(i, j - 1));
             } else {
                 structure[splitPoint] = '('; 
                 structure[j] = ')';
                 pairs.push_back(make_pair(splitPoint, j));
-                segments.push(make_pair(i, splitPoint - 1)); //Push left Segment
-                segments.push(make_pair(splitPoint + 1, j - 1)); //Push right Segment
+                 //Push left Segment
+                segments.push(make_pair(i, splitPoint - 1));
+                //Push right Segment
+                segments.push(make_pair(splitPoint + 1, j - 1)); 
             }
         }
-
-        return pairs; // Return pairs representing secondary structure.
+        // Return pairs representing secondary structure.
+        return pairs; 
     }
 };
 
@@ -151,13 +164,16 @@ int main() {
     int optimal = solver.solve(rnaSeq);
     int n = rna.size();
     vector<vector<int>>& traceback = solver.getTraceback();
+    
     //RNAFoldingAnalyzer analyse = RNAFoldingAnalyzer(); 
     //int actual_pairs = analyse.countActualPairs(actual);  
+    
     RNAFolding folding(rnaSeq, traceback);
     vector<pair<int, int>> pairs;
     string structure(n,'.');
     pairs = folding.tracebackSecondaryStructure(structure);
-    cout<<structure<<endl; //Output the generated secondary structure.
+    //Output the generated secondary structure.
+    cout<<structure<<endl; 
     cout << "optimal pairs " << optimal << endl;
     //cout << "actual pairs" << actual_pairs << endl;
     if(optimal!=0)
