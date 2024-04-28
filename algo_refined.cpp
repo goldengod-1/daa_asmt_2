@@ -144,22 +144,33 @@ int main() {
     string rna, actual;
     // Input RNA sequence
     cin >> rna; 
+
+    //cin>>actual;
+
     //Create RNA sequence object
     RNASequence rnaSeq(rna);
     DynamicProgrammingSolver solver(rnaSeq.length());
     int optimal = solver.solve(rnaSeq);
     int n = rna.size();
     vector<vector<int>>& traceback = solver.getTraceback();
-
+    //RNAFoldingAnalyzer analyse = RNAFoldingAnalyzer(); 
+    //int actual_pairs = analyse.countActualPairs(actual);  
     RNAFolding folding(rnaSeq, traceback);
     vector<pair<int, int>> pairs;
     string structure(n,'.');
     pairs = folding.tracebackSecondaryStructure(structure);
     cout<<structure<<endl; //Output the generated secondary structure.
     cout << "optimal pairs " << optimal << endl;
-    cout << "Optimal pairing according to the indices:"<<endl;
-    for(auto x: pairs){
-        cout<<"("<<x.first<<","<<x.second<<")"<<endl;
+    //cout << "actual pairs" << actual_pairs << endl;
+    if(optimal!=0)
+    {
+        cout << "Optimal pairing according to the indices:"<<endl;
+        for(auto x: pairs){
+            cout<<"("<<x.first<<","<<x.second<<")"<<" "<<rna[x.first]<<" "<<rna[x.second]<<endl;
+        }
+    }
+    else{
+        cout << "No pairing possible";
     }
 
     return 0;
