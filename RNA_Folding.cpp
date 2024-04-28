@@ -1,8 +1,9 @@
 #include <iostream>
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 
 using namespace std;
-//class for RNA sequences.
+
+// class for RNA sequences.
 class RNASequence {
 private:
     string sequence;
@@ -57,7 +58,7 @@ public:
                 // Initialize max with the previous value
                 int max = OPT[i][j - 1]; 
                 
-                //Initialize split point
+                // Initialize split point
                 int splitPoint = -1; 
             
                 // Try different split points and update max.
@@ -103,7 +104,7 @@ private:
 public:
     RNAFolding(RNASequence& r, vector<vector<int>>& tb) : rna(r), traceback(tb) {}
 
-    //Method to perform traceback and generate secondary structure.
+    // Method to perform traceback and generate secondary structure.
     vector<pair<int,int>> tracebackSecondaryStructure(string &structure) {
         int n = rna.length();
         stack<pair<int, int>> segments;
@@ -125,9 +126,9 @@ public:
                 structure[splitPoint] = '('; 
                 structure[j] = ')';
                 pairs.push_back(make_pair(splitPoint, j));
-                 //Push left Segment
+                // Push left Segment
                 segments.push(make_pair(i, splitPoint - 1));
-                //Push right Segment
+                // Push right Segment
                 segments.push(make_pair(splitPoint + 1, j - 1)); 
             }
         }
@@ -181,15 +182,14 @@ int main() {
     vector<pair<int, int>> pairs;
     string structure(n,'.');
     pairs = folding.tracebackSecondaryStructure(structure);
-    //Output the generated secondary structure.
+    // Output the generated secondary structure.
     cout<<structure<<endl; 
     cout << "optimal pairs " << optimal << endl;
     //cout << "actual pairs" << actual_pairs << endl;
-    if(optimal!=0)
-    {
+    if(optimal!=0){
         cout << "Optimal pairing according to the indices:"<<endl;
         for(auto x: pairs){
-            cout<<"("<<x.first<<","<<x.second<<")"<<" "<<rna[x.first]<<" "<<rna[x.second]<<endl;
+            cout<<"("<<x.first<<","<<x.second<<")"<<" "<<"("<<rna[x.first]<<","<<rna[x.second]<<")"<<endl;
         }
     }
     else{
