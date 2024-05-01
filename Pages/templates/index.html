@@ -3,37 +3,21 @@
 
 <head>
     <title>CS F364 Documentation</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         /* Center the form */
         form {
             text-align: center;
-            margin-top: 20px; /* Add some top margin for spacing */
+            margin-top: 50px; /* Add some top margin for spacing */
+            margin-bottom: 20px; /* Add some bottom margin for spacing */
         }
 
-        /* Style for the text field and submit button */
-        #text_input {
-            padding: 10px;
-            width: 300px;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        input[type="submit"] {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
+        /* Center the image */
+        #svgImage {
+            display: block;
+            margin: 20px auto; /* Add margin to center and move it to the top */
+            width: 40vw;
         }
     </style>
     <script type='text/javascript' src='jquery.js'></script>
@@ -42,30 +26,65 @@
 </head>
 
 <body>
-    <section class="header">
+    <section class="header" style="min-height: 16vh;">
         <nav>
-            <a href="../../Documentation.html"><img src="../../images/logo.png"></a>
+            <a href="http://127.0.0.1:5500/daa_asmt_2/Documentation.html"><img src="../static/images/logo.png"></a>
             <div class="nav-links">
                 <ul>
-                    <li><a href="../../Documentation.html">HOME</a></li>
-                    <li><a href="About.html">ABOUT</a></li>
-                    <li><a href="Aim.html">AIM</a></li>
-                    <li><a href="Classes.html">CLASSES</a></li>
-                    <li><a href="Functions.html">FUNCTIONS</a></li>
-                    <li><a href="Outputs.html">OUTPUTS</a></li>
-                    <li><a href="Thoughts.html">COMPLEXITY ANALYSIS</a></li>
-                    <li><a href="SecondaryStructure.html">SECONDARY STRUCTURE</a></li>
+                    <li><a href="http://127.0.0.1:5500/daa_asmt_2/Documentation.html">HOME</a></li>
+                    <li><a href="http://127.0.0.1:5500/daa_asmt_2/About.html">ABOUT</a></li>
+                    <li><a href="http://127.0.0.1:5500/daa_asmt_2/Aim.html">AIM</a></li>
+                    <li><a href="http://127.0.0.1:5500/daa_asmt_2/Classes.html">CLASSES</a></li>
+                    <li><a href="http://127.0.0.1:5500/daa_asmt_2/Functions.html">FUNCTIONS</a></li>
+                    <li><a href="http://127.0.0.1:5500/daa_asmt_2/Outputs.html">COMPARATIVE ANALYSIS</a></li>
+                    <li><a href="http://127.0.0.1:5500/daa_asmt_2/Thoughts.html">COMPLEXITY ANALYSIS</a></li>
+                    <!-- <li><a href="SecondaryStructure.html">SECONDARY STRUCTURE</a></li> -->
                 </ul>
             </div>
         </nav>
     </section>
 
+    <!-- Embed and center the SVG image
+    <embed src="../rna.svg" type="image/svg+xml" width="100%" height="400px"> -->
+    <img id="svgImage" src="{{ url_for('static', filename='./images/rna.svg') }}" alt="SVG Image" style="display: block; margin: 0 auto; border: 3px solid chartreuse;">
+
     <!-- Move the form just below the navigation bar -->
-    <form action="/process_text" method="post">
+    <form action="/process_text" method="post" target="_self" id="myForm">
         <label for="text_input">Enter text:</label><br>
-        <input type="text" id="text_input" name="text_input"><br><br>
-        <input type="submit" value="Submit">
+        <input type="text" id="text_input" name="text_input" style="padding: 8px; margin-top: 5px; border: 2px solid #ccc; border-radius: 5px; width: 300px;"><br><br>
+        <input type="submit" value="Submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">
     </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the form element
+            var form = document.getElementById('myForm');
+
+            // Add event listener for form submission
+            form.addEventListener('submit', function (event) {
+                // Prevent the default form submission behavior
+                event.preventDefault();
+
+                // Optionally, you can perform form validation here
+                // If validation passes, you can submit the form data via AJAX
+
+                // Example AJAX submission using Fetch API
+                fetch('/process_text', {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                    .then(response => {
+                        // Handle response
+                        console.log('Form submitted successfully');
+                    })
+                    .catch(error => {
+                        // Handle error
+                        console.error('Error submitting form:', error);
+                    });
+            });
+        });
+    </script>
+
 </body>
 
 </html>

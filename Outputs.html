@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CS F364 Documentation</title>
+	<link rel="stylesheet" href="./Pages/static/style.css">
+	<link rel="icon" type="image/x-icon" href="./Pages/static/images/Tc1opt.png">
+	<style>
+		body {
+			margin: 0;
+			font-family: Arial, sans-serif;
+			color: white;
+			/* Make text white */
+			background-color: #f5f5f5;
+			overflow-x: hidden;
+			/* Prevent horizontal scrolling */
+		}
+
+		.header {
+			background-color: #333;
+			padding: 20px;
+			height: 2000vh;
+		}
+
+		nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		/* .nav-links ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        } */
+
+		.nav-links li {
+			margin-right: 20px;
+		}
+
+		.nav-links a {
+			color: white;
+			text-decoration: none;
+		}
+
+		.output_text {
+			padding: 20px;
+			/* background-color: rgba(255, 255, 255, 0.8); */
+			/* Semi-transparent white background */
+			border-radius: 10px;
+			/* Add border radius */
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			margin: 20px;
+			/* Add margin to separate from the header */
+			max-width: 100%;
+			/* Ensure content does not exceed viewport width */
+			margin-left: -15px;
+			height: 2000vh;
+		}
+
+		.output_text h1 {
+			margin-bottom: 20px;
+			/* color: #333; */
+			color: white
+				/* Adjust heading color */
+		}
+
+		.output_text div {
+			margin-bottom: 20px;
+			/* Add margin between sections */
+		}
+
+		.output_text h3 {
+			/* color: #666; */
+			color: white;
+			margin-bottom: 10px;
+		}
+
+		.output_text p {
+			/* color: #666; */
+			color: white;
+			margin-bottom: 5px;
+			word-wrap: break-word;
+			/* or word-break: break-all; */
+		}
+	</style>
+</head>
+
+<body>
+	<section class="header">
+		<nav>
+			<a href="Documentation.html"><img src="./Pages/static/images/logo.png"></a>
+			<div class="nav-links">
+				<ul>
+					<li><a href="Documentation.html">HOME</a></li>
+					<li><a href="About.html">ABOUT</a></li>
+					<li><a href="Aim.html">AIM</a></li>
+					<li><a href="Classes.html">CLASSES</a></li>
+					<li><a href="Functions.html">FUNCTIONS</a></li>
+					<li><a href="Outputs.html">COMPARATIVE ANALYSIS</a></li>
+					<li><a href="Thoughts.html">COMPLEXITY ANALYSIS</a></li>
+					<li><a href="Vis.html">VISUALISATION</a></li>
+					<!-- <li><a href="./Pages/templates/index.html">SECONDARY STRUCTURE</a></li> -->
+				</ul>
+			</div>
+		</nav>
+	</section>
+
+	<div class="output_text">
+		<h1>Comparative Analysis</h1>
+		<p style="font-size: 18px;text-align: center;font-family:'Times New Roman', Times, serif;">
+			The algorithm aims to predict the most stable secondary structure based on base-pairing rules (A-U, U-A, C-G, G-C), which may not always match the actual expected structure.<br/>
+			The algorithm may predict more pairs than the actual expected RNA structure due to its optimization strategy.
+			It prioritizes maximizing the number of base pairs within the sequence,<br/>
+			which can lead to overestimation, especially in regions with multiple potential pairings.
+			In some cases, the algorithm may identify pairs that are not present in the actual expected structure,<br/>resulting in a higher count of predicted pairs compared to the actual structure.
+			While the algorithm aims to find the most stable secondary structure based on optimization criteria,<br/> it may not always reflect the biological reality accurately.
+			Biological RNA structures are influenced by various factors such as tertiary interactions, folding kinetics, and RNA-binding proteins,<br/> which are not fully captured by the algorithm's optimization approach.
+		</p><br />
+
+		<hr><br /><br />
+
+		<div>
+			<h3 style="margin-left: 3vw;color:orange">Test Case 1</h3>
+			<p style="color:chartreuse">Actual Secondary Structure</p><br />
+			<p style="color:wheat">RNA Sequence</p>
+			<p> AAGACUAUACUUUCAGGGAUCAUUUCUAUAGUGUGUUACUAGAGAAGUUUCUCUGAACGUGUAGAGCACCGAAAACCACGAGGAAGAGAGGUAGCGUUUUCUCCUGAGCGUGAAGCCGGCUUUCUGGCGUUGCUUGGCUGCAACUGCCGUCAGCCAUUGAUGAUCGUUCUUCUCUCCGUAUUGGGGAGUGAGAGGGAGAGAACGCGGUCUGAGUGGU
+			</p><br />
+			<p style="color:wheat">Number of pairs formed are 63</p><br />
+			<p style="color:wheat">Dot Bracket Notation</p><br />
+			<p>(((((((((((..(((((.....))))).)))))).))))).......(((.((......))))).........(((((..............((((((((((((..(((.......((((...(((((((((......))))).))))..)))).........))).(((((((((....))))))).))..)))))))))))).......)))))
+			</p><br />
+			<p style="color:wheat">Secondary Structure</p><br />
+			<img src="./Pages/static/images/Tc6.png" height="400px" width="650px"
+				style="display: block; margin: 0 auto; border: 3px solid chartreuse;">
+
+			<br /><br />
+			<p style="color:chartreuse">Algorithms Secondary Structure</p><br />
+			<p style="color:wheat">RNA Sequence</p>
+			<p> AAGACUAUACUUUCAGGGAUCAUUUCUAUAGUGUGUUACUAGAGAAGUUUCUCUGAACGUGUAGAGCACCGAAAACCACGAGGAAGAGAGGUAGCGUUUUCUCCUGAGCGUGAAGCCGGCUUUCUGGCGUUGCUUGGCUGCAACUGCCGUCAGCCAUUGAUGAUCGUUCUUCUCUCCGUAUUGGGGAGUGAGAGGGAGAGAACGCGGUCUGAGUGGU
+			</p><br />
+			<p style="color:wheat">Number of pairs formed are 75</p><br />
+			<p style="color:wheat">Dot Bracket Notation</p><br />
+			<p>((..(((.((...(.((((((((..(.(.(.((.(((.(.(((((....))))))))(.((.((.(((((((((.(((.(((.((.(.((....).))))))).)(.((.....))))).)))).)).(((((......))))))))).)))))))))))))))).(((((((((((.(.......)).)))))..).))))).)))).).)))..)
+			</p><br />
+			<p style="color:wheat">Secondary Structure</p><br />
+			<img src="./Pages/static/images/Tc6opt.png" height="400px" width="650px"
+				style="display: block; margin: 0 auto; border: 3px solid chartreuse;">
+		</div>
+
+		<!-- ############################################################################################################ -->
+
+		<br />
+		<hr><br /><br />
+
+		<div>
+			<h3 style="margin-left: 3vw;color:orange">Test Case 2</h3>
+			<p style="color:chartreuse">Actual Secondary Structure</p><br />
+			<p style="color:wheat">RNA Sequence</p>
+			<p> UGCCUGGCGGCCGUAGCGCGGUGGUCCCACCUGACCCCAUGCCGAACUCAGAAGUGAAACGCCGUAGCGCCGAUGGUAGUGUGGGGUCUCCCCAUGCGAGAGUAGGGAACUGCCAGGCAU
+			</p><br />
+			<p style="color:wheat">Number of pairs formed are 37</p><br />
+			<p style="color:wheat">Dot Bracket Notation</p><br />
+			<p>((((((((((.....((((((((....(((((((.............))))..)))...)))))).)).((.((....((((((((...))))))))....)).))...)))))))))).
+			</p><br />
+			<p style="color:wheat">Secondary Structure</p><br />
+			<img src="./Pages/static/images/Tc2.png" height="400px" width="650px"
+				style="display: block; margin: 0 auto; border: 3px solid chartreuse;">
+
+			<br /><br />
+			<p style="color:chartreuse">Algorithms Secondary Structure</p><br />
+			<p style="color:wheat">RNA Sequence</p>
+			<p> UGCCUGGCGGCCGUAGCGCGGUGGUCCCACCUGACCCCAUGCCGAACUCAGAAGUGAAACGCCGUAGCGCCGAUGGUAGUGUGGGGUCUCCCCAUGCGAGAGUAGGGAACUGCCAGGCAU
+			</p><br />
+			<p style="color:wheat">Number of pairs formed are 42</p><br />
+			<p style="color:wheat">Dot Bracket Notation</p><br />
+			<p>(((((((((((....)).))((..(((((((((((((.((.(.((.((....)))(...(((....))))))))))..)((.(((....)))))).).)).)).))))))..))))))).
+			</p><br />
+			<p style="color:wheat">Secondary Structure</p><br />
+			<img src="./Pages/static/images/Tc2opt.png" height="400px" width="650px"
+				style="display: block; margin: 0 auto; border: 3px solid chartreuse;">
+		</div>
+
+		<!-- ############################################################################################################ -->
+
+		<br />
+		<hr><br /><br />
+
+		<div>
+			<h3 style="margin-left: 3vw;color:orange">Test Case 3</h3>
+			<p style="color:chartreuse">Actual Secondary Structure</p><br />
+			<p style="color:wheat">RNA Sequence</p>
+			<p> GUCUACGGCCAUACCACCCUGAACGCGCCCGAUCUCGUCUGAUCUCGGAAGCUAAGCAGGGUCGGGCCUGGUUAGUACUUGGAUGGGAGACCGCCUGGGAAUACCGGGUGCUGUAGGCUUU
+			</p><br />
+			<p style="color:wheat">Number of pairs formed are 35</p><br />
+			<p style="color:wheat">Dot Bracket Notation</p><br />
+			<p>(((((((((....((((((((.....((((((............))))..))....)))))).)).(((((......((.((.(((....))))).)).....))))).)))))))))...
+			</p><br />
+			<p style="color:wheat">Secondary Structure</p><br />
+			<img src="./Pages/static/images/Tc3.png" height="400px" width="650px"
+				style="display: block; margin: 0 auto; border: 3px solid chartreuse;">
+
+			<br /><br />
+			<p style="color:chartreuse">Algorithms Secondary Structure</p><br />
+			<p style="color:wheat">RNA Sequence</p>
+			<p> GUCUACGGCCAUACCACCCUGAACGCGCCCGAUCUCGUCUGAUCUCGGAAGCUAAGCAGGGUCGGGCCUGGUUAGUACUUGGAUGGGAGACCGCCUGGGAAUACCGGGUGCUGUAGGCUUU
+			</p><br />
+			<p style="color:wheat">Number of pairs formed are 40</p><br />
+			<p style="color:wheat">Dot Bracket Notation</p><br />
+			<p>(.((((..((((.((((..(.((((.((((((.(((.(.((..((....))).))).))..))))))).).)))))....)))))))(((((.(..((.....)))))).)).))).)...
+			</p><br />
+			<p style="color:wheat">Secondary Structure</p><br />
+			<img src="./Pages/static/images/Tc3opt.png" height="400px" width="650px"
+				style="display: block; margin: 0 auto; border: 3px solid chartreuse;">
+		</div>
+
+		<!-- ############################################################################################################ -->
+
+		<br />
+		<hr><br /><br />
+
+		<div>
+			<h3 style="margin-left: 3vw;color:orange">Test Case 4</h3>
+			<p style="color:chartreuse">Actual Secondary Structure</p><br />
+			<p style="color:wheat">RNA Sequence</p>
+			<p> GGGCUUCGUUAGGUGAGGCUCCUGUAUGGAGAUACGCUGCUGCCCAAAAAUGUCCAAAGACGCCAAUGGGUCAACAGAAAUCAUCGACAUAAGGUGAUUUUUAAUGCAGCUGGAUGCUUGUCCUAUGCCAUACAGUGCUAAAGCUCUACGAUUGAAGCCCA
+			</p><br />
+			<p style="color:wheat">Number of pairs formed are 46</p><br />
+			<p style="color:wheat">Dot Bracket Notation</p><br />
+			<p>.((((((((..(((..(((..((((((((......(((((.(((((....((((....))))....))))).....((((..(((.......)))..))))....))))).(((......)))....)))))))).)))...)))..))....))))))..
+			</p><br />
+			<p style="color:wheat">Secondary Structure</p><br />
+			<img src="./Pages/static/images/Tc4.png" height="400px" width="650px"
+				style="display: block; margin: 0 auto; border: 3px solid chartreuse;">
+
+			<br /><br />
+			<p style="color:chartreuse">Algorithms Secondary Structure</p><br />
+			<p style="color:wheat">RNA Sequence</p>
+			<p> GGGCUUCGUUAGGUGAGGCUCCUGUAUGGAGAUACGCUGCUGCCCAAAAAUGUCCAAAGACGCCAAUGGGUCAACAGAAAUCAUCGACAUAAGGUGAUUUUUAAUGCAGCUGGAUGCUUGUCCUAUGCCAUACAGUGCUAAAGCUCUACGAUUGAAGCCCA
+			</p><br />
+			<p style="color:wheat">Number of pairs formed are 55</p><br />
+			<p style="color:wheat">Dot Bracket Notation</p><br />
+			<p>(((((((((.((((.((.(.(.((((((((((.....).)).))((((((.(((((..(.(((.(.(...(.((.(.((.(((.(..(....))))))))))))))).))))))..))).)..).))..)))))).))))...).))))))...).)))).
+			</p><br />
+			<p style="color:wheat">Secondary Structure</p><br />
+			<img src="./Pages/static/images/Tc4opt.png" height="400px" width="650px"
+				style="display: block; margin: 0 auto; border: 3px solid chartreuse;">
+		</div>
+
+		<!-- ############################################################################################################ -->
+
+		<br />
+		<hr><br /><br />
+
+		<div>
+			<h3 style="margin-left: 3vw;color:orange">Test Case 5</h3>
+			<p style="color:chartreuse">Actual Secondary Structure</p><br />
+			<p style="color:wheat">RNA Sequence</p>
+			<p> AAUCUGUAGUCUUGGAGCCGCACAGGGUUGGUGGUACCCUCGAGCACACCAGACUUGCAGAAAAAGCAUACUCCAGAGGAAGCUGAGGCAUGCCUGCUCGAGAGCCAGCUGUUCCAUGUGCAAUUUUCCUCUGAUAGUUUCUGGUCACUGUUGCCACGGUGAUAAUGACUGGGCUAUGUCAUUAUCUAUCCGCCAACAGUAAGAGAAGCUUUGCAGUCGAGAUAUUGUUUAGCAGAUGGAGUGUUUUCUGUUGAACACUAAGUACUGCCACAAGU
+			</p><br />
+			<p style="color:wheat">Number of pairs formed are 62</p><br />
+			<p style="color:wheat">Dot Bracket Notation</p><br />
+			<p>..((((((((((...........(((((.......)))))..........)))).))))))............((((((((......(((((...(((........))).....)))))......)))))))).............(((((((.......(((((((((........))))))))).......)))))))............(((((.........((((((((((..........)))))))))).......))))).......
+			</p><br />
+			<p style="color:wheat">Secondary Structure</p><br />
+			<img src="./Pages/static/images/Tc5.png" height="400px" width="650px"
+				style="display: block; margin: 0 auto; border: 3px solid chartreuse;">
+			<br /><br />
+			<p style="color:chartreuse">Algorithms Secondary Structure</p><br />
+			<p style="color:wheat">RNA Sequence</p>
+			<p> AAUCUGUAGUCUUGGAGCCGCACAGGGUUGGUGGUACCCUCGAGCACACCAGACUUGCAGAAAAAGCAUACUCCAGAGGAAGCUGAGGCAUGCCUGCUCGAGAGCCAGCUGUUCCAUGUGCAAUUUUCCUCUGAUAGUUUCUGGUCACUGUUGCCACGGUGAUAAUGACUGGGCUAUGUCAUUAUCUAUCCGCCAACAGUAAGAGAAGCUUUGCAGUCGAGAUAUUGUUUAGCAGAUGGAGUGUUUUCUGUUGAACACUAAGUACUGCCACAAGU
+			</p><br />
+			<p style="color:wheat">Number of pairs formed are 100</p><br />
+			<p style="color:wheat">Dot Bracket Notation</p><br />
+			<p>(.(.((((((((((((.(.(((.((..((((((((.(....)).).))))).))))))((((((..((..(((((((..(((((((((....)))(((....)))))))).)))(.(((.((((((.((((..(.(((((((..(.((((((((...(((((((((((((.....).))))))))).).)))).)))))))))).)).))).).))..)).).))))...).))).)))))))))))))))....).).))).)))...)))).)
+			</p><br />
+			<p style="color:wheat">Secondary Structure</p><br />
+			<img src="./Pages/static/images/Tc5opt.png" height="400px" width="650px"
+				style="display: block; margin: 0 auto; border: 3px solid chartreuse;">
+		</div>
+
+		<!-- ############################################################################################################ -->
+
+		<br />
+		<hr><br /><br />
+
+		<div>
+			<h3 style="margin-left: 3vw;color:orange">Test Case 6</h3>
+			<p style="color:chartreuse">Actual Secondary Structure</p><br />
+			<p style="color:wheat">RNA Sequence</p>
+			<p>
+				GCCGGGCGCGGUGGCGCGUGCCUGUAGUCCCAGCU
+				ACUCGGGAGGCUGAGGCUGGAGGAUCGCUUGAGUC
+				CAGGAGUUCUGGGCUGUAGUGCGCUAUGCCGAUCG
+				GGUGUCCGCACUAAGUUCGGCAUCAAUAUGGUGAC
+				CUCCCGGGAGCGGGGGACCACCAGGUUGCCUAAGG
+				AGGGGUGAACCGGCCCAGGUCGGAAACGGAGCAGGU
+				CAAAACUCCCGUGCUGAUCAGUAGUGGGAUCGCGCC
+				UGUGAAUAGCCACUGCACUCCAGCCUGGGCAACAUA
+				GCGAGACCCCGUCUCU
+			</p><br />
+			<p style="color:wheat">Number of pairs formed are 120</p><br />
+			<p style="color:wheat">Dot Bracket Notation</p><br />
+			<p> (((((((((((....))))))))....(((..........))))))
+				.((((((((((.((((((((((((((((....(((((((((((((.
+				(((((((...((((((((((.(((((((((((((((((((((((((
+				((((((((....))))))))))))))))))((...))(((((((...(
+				((((....(((....)))....))))).))))))))))))))))).)))
+				))))...)))))))))))))))))))))))))))))))))))))..))))))))))))))))).
+			</p><br />
+			<p style="color:wheat">Secondary Structure</p><br />
+			<img src="./Pages/static/images/Tc1.png" height="400px" width="650px"
+				style="display: block; margin: 0 auto; border: 3px solid chartreuse;">
+
+			<br /><br />
+			<p style="color:chartreuse">Algorithms Secondary Structure</p><br />
+			<p style="color:wheat">RNA Sequence</p>
+			<p> GCCGGGCGCGGUGGCGCGUGCCUGUAGUCCCAGCU
+				ACUCGGGAGGCUGAGGCUGGAGGAUCGCUUGAGUC
+				CAGGAGUUCUGGGCUGUAGUGCGCUAUGCCGAUCG
+				GGUGUCCGCACUAAGUUCGGCAUCAAUAUGGUGAC
+				CUCCCGGGAGCGGGGGACCACCAGGUUGCCUAAGG
+				AGGGGUGAACCGGCCCAGGUCGGAAACGGAGCAGGU
+				CAAAACUCCCGUGCUGAUCAGUAGUGGGAUCGCGCC
+				UGUGAAUAGCCACUGCACUCCAGCCUGGGCAACAUA
+				GCGAGACCCCGUCUCU
+			</p><br />
+			<p style="color:wheat">Number of pairs formed are 106</p><br />
+			<p style="color:wheat">Dot Bracket Notation</p><br />
+			<p>((.(((((((....))))(.((.((((((((((((.(....))).)))(((((((((((((.(((.((.((((.....))))((((.(.((((((((((.((.(....))).))).)).)..)).)))))(.((((((.((.((((....)))))).).))))..)))))))))))(((((((.(((.(((.(.(....).))).)).)))))...).)))(((((.((((..((.((.....).))).))).)))).))).).)))))))))))..).).)).)).))))).).)...
+			</p><br />
+			<p style="color:wheat">Secondary Structure</p><br />
+			<img src="./Pages/static/images/Tc1opt.png" height="400px" width="650px"
+				style="display: block; margin: 0 auto; border: 3px solid chartreuse;">
+		</div>
+
+		<!-- ############################################################################################################ -->
+
+		<br />
+		<hr><br /><br />
+
+	</div>
+</body>
+
+</html>
